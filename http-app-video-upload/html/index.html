@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VLOG</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <h1 class="title">VLOG</h1>
+        </header>
+        <div class="content" id="contentMp4">
+
+        </div>
+        <nav class="bar bar-tab">
+            <a class="tab-item external active" href="#">
+                <span class="icon icon-app"></span>
+                <span class="tab-label">列表</span>
+            </a>
+            <a class="tab-item external" href="#">
+                <span class="icon icon-computer"></span>
+                <span class="tab-label">上传</span>
+            </a>
+
+        </nav>
+    </div>
+</div>
+
+<script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+
+<script type="text/javascript">
+    window.onload=getList();
+    function getList(){
+        $.getJSON(
+            "http://127.0.0.1:8090/api/list",
+            null,
+            function(result){
+                var testDiv=document.getElementById("contentMp4");
+                testDiv.innerHTML="";
+                for (var i=0;i<result.length;i++){
+                    testDiv.innerHTML+=`
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-content-inner">
+                                <video controls="controls" preload="auto" width="100%" height="100%">
+                                    <source src=`+result[i]+` type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                }
+            }
+        )
+    }
+</script>
+
+</body>
+</html>

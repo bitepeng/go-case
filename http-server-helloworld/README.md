@@ -3,9 +3,17 @@
 
 ## 核心代码
 ```
-http.Handle("/",http.FileServer(http.Dir(".")))
+// Server
+http.HandleFunc("/",handleHello)
 if err:=http.ListenAndServe(":8080",nil);err!=nil{
     fmt.Println(err)
+}
+
+// Hello
+func handleHello(w http.ResponseWriter,r *http.Request)  {
+	if _,err:=w.Write([]byte("Hello World"));err!=nil{
+		fmt.Println(err)
+	}
 }
 ```
 

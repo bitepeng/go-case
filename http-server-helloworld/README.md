@@ -21,7 +21,7 @@ func handleHello(w http.ResponseWriter,r *http.Request)  {
 ```
 # 编译或运行
 go build main.go
-go ruan main.go
+go run main.go
 ```
 > 浏览器访问
 http://127.0.0.1:8080

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Count(ch chan int, s int) {
 	fmt.Println("counting: ", s)
@@ -8,9 +10,10 @@ func Count(ch chan int, s int) {
 }
 
 func main() {
-	chs := make([]chan int, 1000)
+	num := 10000
+	chs := make([]chan int, num)
 
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < num; i++ {
 		chs[i] = make(chan int)
 		go Count(chs[i], i)
 	}

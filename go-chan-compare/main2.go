@@ -15,12 +15,14 @@ func main() {
 	fmt.Println("concurrent func: ", t1s)
 }
 
+// 模拟耗时任务
 func job2(ch chan int, s int) {
 	time.Sleep(1 * time.Millisecond)
 	fmt.Println("concurrent execute job : ", s)
 	ch <- 1
 }
 
+// 协程并发执行
 func execute2(num int) {
 	chs := make([]chan int, num)
 	for i := 0; i < num; i++ {

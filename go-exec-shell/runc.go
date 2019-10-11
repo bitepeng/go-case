@@ -23,7 +23,7 @@ func main() {
 		}*/
 
 	cmdexe := "testc"
-	cmdin := "11 22 33"
+	cmdin := "11 22 333"
 
 	//生成可执行文件
 	if err := RunCommand("gcc", cmdexe+".c", "-o", cmdexe); err != nil {
